@@ -9,7 +9,7 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 const client = new QueryClient()
 
 ReactDOM.render(
-  <QueryClientProvider client={client} >
+  <QueryClientProvider client={client}>
     <App />
     <ReactQueryDevtools/>
   </QueryClientProvider>,
