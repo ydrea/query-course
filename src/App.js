@@ -11,20 +11,30 @@ return fetch(`https://api.github.com/repos/${rep}`)
 };
 
 function App() {
+  //postavi search
+  const [trazi, traziSet] = useState('')
   //
-  const { data, isLoading, error } = useQuery(["gita", "facebook/react"], () =>
-    getProducts("facebook/react")
+  const { data, isLoading, error } = useQuery(["gita", trazi], () =>
+    getProducts(trazi)
   );
   console.log(data);
   //provjeri
   // const checkIt = () => {
-    if (isLoading) return <p>loading...</p>;
-    if (error) return <div> Greška </div>;
-  // };
+    if (isLoading) {  
+      return <div className="App">
+    <header className="App-header">
+      <input type='text' value={trazi} onChange={e => traziSet(e.target.value)}/>
+    </header>
+  </div>
+
+    // if (error) return <div> Greška </div>;
+  };
 
   return (
     <div className="App">
-      <header className="App-header"></header>
+      <header className="App-header">
+        <input type='text' value={trazi} onChange={e => traziSet(e.target.value)}/>
+      </header>
     </div>
   );
 }
